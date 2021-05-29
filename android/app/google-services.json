@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "179592661907",
+    "project_id": "poll-app-d590c",
+    "storage_bucket": "poll-app-d590c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179592661907:android:803d589d982cbe0a0cf666",
+        "android_client_info": {
+          "package_name": "com.flutterflow.poller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179592661907-454bglpp5ep6ksng3patcnksgp1g4t4r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL96mN46-i1djLJX0NnxvZuyw2ra2cDXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179592661907-454bglpp5ep6ksng3patcnksgp1g4t4r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
