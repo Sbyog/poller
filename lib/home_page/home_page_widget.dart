@@ -59,7 +59,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(5, 1, 0, 0),
+                  padding: EdgeInsets.fromLTRB(5, 3, 0, 0),
                   child: Text(
                     'The Pulse of the People',
                     style: FlutterFlowTheme.subtitle2.override(
@@ -114,14 +114,32 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 children: [
                                   Align(
                                     alignment: Alignment(0, 0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: Image.network(
-                                        homePagePollsRecord.choiceAImg,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height: 200,
-                                        fit: BoxFit.cover,
+                                    child: InkWell(
+                                      onTap: () async {
+                                        final choiceAPerc =
+                                            homePagePollsRecord.choiceAVotes;
+
+                                        final pollsRecordData = {
+                                          ...createPollsRecordData(
+                                            choiceAPerc: choiceAPerc,
+                                          ),
+                                          'choice_a_votes':
+                                              FieldValue.increment(1),
+                                          'totalvotes': FieldValue.increment(1),
+                                        };
+
+                                        await homePagePollsRecord.reference
+                                            .update(pollsRecordData);
+                                      },
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.network(
+                                          homePagePollsRecord.choiceAImg,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          height: 200,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -132,7 +150,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           EdgeInsets.fromLTRB(0, 150, 0, 0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
+                                          final choiceAPerc =
+                                              homePagePollsRecord.choiceAVotes;
+
                                           final pollsRecordData = {
+                                            ...createPollsRecordData(
+                                              choiceAPerc: choiceAPerc,
+                                            ),
                                             'choice_a_votes':
                                                 FieldValue.increment(1),
                                             'totalvotes':
@@ -178,14 +202,32 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 children: [
                                   Align(
                                     alignment: Alignment(0, 0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: Image.network(
-                                        homePagePollsRecord.choiceBImg,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height: 200,
-                                        fit: BoxFit.cover,
+                                    child: InkWell(
+                                      onTap: () async {
+                                        final choiceBPerc =
+                                            homePagePollsRecord.choiceBVotes;
+
+                                        final pollsRecordData = {
+                                          ...createPollsRecordData(
+                                            choiceBPerc: choiceBPerc,
+                                          ),
+                                          'choice_b_votes':
+                                              FieldValue.increment(1),
+                                          'totalvotes': FieldValue.increment(1),
+                                        };
+
+                                        await homePagePollsRecord.reference
+                                            .update(pollsRecordData);
+                                      },
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.network(
+                                          homePagePollsRecord.choiceBImg,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          height: 200,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -196,7 +238,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           EdgeInsets.fromLTRB(0, 150, 0, 0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
+                                          final choiceBPerc =
+                                              homePagePollsRecord.choiceBVotes;
+
                                           final pollsRecordData = {
+                                            ...createPollsRecordData(
+                                              choiceBPerc: choiceBPerc,
+                                            ),
                                             'choice_b_votes':
                                                 FieldValue.increment(1),
                                             'totalvotes':
@@ -229,6 +277,38 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ],
                               )
                             ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Text(
+                            homePagePollsRecord.choiceAPerc.toString(),
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.subtitle2.override(
+                              fontFamily: 'Poppins',
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Text(
+                            homePagePollsRecord.choiceBPerc.toString(),
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.subtitle2.override(
+                              fontFamily: 'Poppins',
+                            ),
                           ),
                         ),
                       )
